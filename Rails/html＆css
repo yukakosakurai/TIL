@@ -1,0 +1,30 @@
+わすれがちなこと。
+
+
+設定の場所
+1. margin(padding): 1px ; /* 値1つは、上下左右 */ 
+2. margin(padding): 1px 2px ; /* 値2つは、上下 左右 */ 
+3. margin(padding): 1px 2px 3px ; /* 値3つは、上 左右 下 */ 
+margin(padding): 1px 2px 3px 4px ; /* 値4つは、上 右 下 左 （時計まわり）*/ 
+
+リセットcss
+ブラウザにはそのブラウザ独自のcssをもともと持っている。これに自分たちのcssが影響を受けないように、リセットcssというものを設定する。
+
+5. * {
+6. margin: 0;
+7. padding: 0;
+8. box-sizing: border-box;
+
+
+floatとclearfixのまとめ
+	横並びにさせたい子要素すべてにfloatを設定する。
+　floatを設定した要素を親要素で囲む
+  親要素にclearfixを設定する
+
+中央寄せ
+テキスト…text-align:center
+
+画像…text-align:center
+
+ブロックレベル要素…　要素の中央寄せは、幅を指定して、余白を作りmargin: 0 auto;を指定する。
+
