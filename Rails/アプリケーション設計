@@ -1,0 +1,20 @@
+
+主なアクション
+閲覧	index	show
+生成	new	create
+更新	edit	update
+削除	delete	-
+
+
+例）
+ Prefix   Verb   URI Pattern                 Controller#Action
+    tweets   GET    /tweets(.:format)           tweets#index
+             POST   /tweets(.:format)           tweets#create
+ new_tweet   GET    /tweets/new(.:format)       tweets#new
+edit_tweet   GET    /tweets/:id/edit(.:format)  tweets#edit
+     tweet   GET    /tweets/:id(.:format)       tweets#show
+             PATCH  /tweets/:id(.:format)       tweets#update
+             PUT    /tweets/:id(.:format)       tweets#update
+             DELETE /tweets/:id(.:format)       tweets#destroy
+             
+             大体こんな感じになる。
