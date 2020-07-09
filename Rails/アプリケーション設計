@@ -37,4 +37,9 @@ edit_tweet   GET    /tweets/:id/edit(.:format)  tweets#edit
              
              大体こんな感じになる。
 
-あ
+URLの構造
+http://localhost:3000/ディレクトリ名/ファイル名
+↓　　　　　　　　↓
+プロトコル名　　ホスト名＋ドメイン名
+
+ディレクトリ名：サーバー内のフォルダ名とそのフォルダの位置を表す文字列のこと
