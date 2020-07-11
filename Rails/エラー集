@@ -1,0 +1,22 @@
+ルーティングエラー
+サインアウトを押すとルーティングエラー。
+
+ルーティングエラーが出たら、
+①ルーティングを見る。
+Devise_forの順番だったりが後ろにあると出ることがある。
+②ルートパスのスペルミス
+③
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers-2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+黄色いとところの記述がないとだめ。
+以上３点を確認。
+
+https://ja.coder.work/so/ruby-on-rails/104636
