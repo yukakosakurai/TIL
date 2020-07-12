@@ -5,8 +5,8 @@
 ①ルーティングを見る。
 Devise_forの順番だったりが後ろにあると出ることがある。
 ②ルートパスのスペルミス
-③
-<!DOCTYPE html>
+③javascrp確認！
+<!DOCTYPE html>
 <html>
   <head>
     <title>Bookers-2</title>
