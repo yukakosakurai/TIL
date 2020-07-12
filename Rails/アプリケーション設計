@@ -20,6 +20,13 @@
 主なアクション
 閲覧	index	show
 生成	new	create
+
+newとcreateの違い
+
+newはオブジェクトを生成するだけでDBには反映されない。
+createはオブジェクトを生成して、保存して、INSERTまで行う。
+
+
 更新	edit	update
 削除	delete	-
 
