@@ -1,4 +1,4 @@
-エラーメッセージを表示したい時。空欄で投稿するとnomethoderror
+エラーメッセージを表示したい時。空欄で投稿するとnomethoderrorがでる
 
 def create
     @book=Book.new(book_params)
