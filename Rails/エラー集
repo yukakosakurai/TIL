@@ -20,3 +20,51 @@ Devise_forの順番だったりが後ろにあると出ることがある。
 以上３点を確認。
 
 https://ja.coder.work/so/ruby-on-rails/104636
+
+
+Git addができない
+
+まず自分がどこにいるのか把握して、pushしたいうフォルダまで移動する。
+cdで移動するたびにlsコマンドで次にどこに飛ぶことができるのか、把握しながら進めていく。
+
+例えばchapter2の中のchapter2.html&chapter2.cssをpushしたいとなったら、
+cd　chapter2まで移動。
+
+ここで
+git init
+意味：からのgitリポジトリを作る。
+　　　これをすることでgitの管理下に置かれたことになる。
+　　　ls－aを打つと.gitという隠れフォルダーが見られるはず。
+
+git　statusで状況確認しながら
+
+Git add *　　　　※インデックスに追加する作業
+
+（Git status）
+
+Git commit -m "メッセージ"
+
+（Git status）
+
+（Git log）で履歴を確認
+
+Git remote add origin [url]
+ローカルリポジトリとリモートリポジトリを紐づけ
+
+Git remote -v　…　今紐づけられているリモートリポジトリが表示される
+
+Git push origin master 
+
+Pwd            現在のファイルが何かを確認
+Ls　　　　次どこに飛べるか
+Ls -a　　　次どこに飛べるか（隠れファイル込み）
+Git status　現在の状況確認　次に何をすればよいかわかる
+Git log　　　コミットの履歴を確認
+Git remote -v　　今どのリモートリポジトリと紐づけら得ているか表示
+
+メールアドレスと名前を求められたら…
+->
+git config --global user.name “XXXX”　本名、ローマ字
+git config --global user.email XXXX      githubに登録したメール
+
+
