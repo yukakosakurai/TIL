@@ -1,0 +1,30 @@
+scaffoldとは
+
+一つのひな形を作成してくれもの。
+使用したいデータ型を指定してつくりたいように土台作りをする
+
+rails generate（ｇ） scaffold モデル名 カラム名1:データ型1 カラム名2:データ型 2 …
+
+db:migrate わすれずに！
+
+参考：https://techacademy.jp/magazine/7204
+
+これ一個でアプリの土台が作れる優れもの。
+
+
+pry_byebugとは
+
+アプリケーションに導入し、一度プログラムを停止してそこまでに不具合がないか調べるもの
+
+その変数に今どんな値が入っているか、を確認したい時に使う
+
+使い方
+gemfileにgem 'pry-byebug'を入力
+
+bundle install
+
+rbファイルではコード内にbunding.pry
+erbファイルでは<% binding.pry %>と入力する。
+
+参考：https://qiita.com/ryosuketter/items/da3a38d0d41c7e20a2d6
+カリキュラムでは開発スキルアップからアプリケーションを完成させように移動させた
