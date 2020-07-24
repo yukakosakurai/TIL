@@ -67,4 +67,18 @@ Git remote -v　　今どのリモートリポジトリと紐づけら得てい�
 git config --global user.name “XXXX”　本名、ローマ字
 git config --global user.email XXXX      githubに登録したメール
 
+画像の登録時にエラー
+
+
+
+モデルに追記する。
+
+attachment :image # ここを追加（_idは含めません）
+
+画像関係のエラーが出た時
+・<form_for>
+<%= f.attachment_field :image %>で実装しているか
+・モデルに画像用のメソッドを追加しているか
+
+アプリ２/３
 
