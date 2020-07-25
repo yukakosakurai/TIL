@@ -99,3 +99,28 @@ attachment :image # ここを追加（_idは含めません）
   <% end %>
   
   https://qiita.com/at-946/items/6cf11f100951de67d085
+  
+  User_idとはなんだ
+
+ def create
+    @user=current_user
+    @books=Book.all
+    @book=Book.new(book_params)
+    @book.user_id = current_user.id #作った人のidと投稿したヒトを紐づける
+    if @book.save
+      flash[:notice] = "successfully"
+      redirect_to book_path(@book)
+    else
+      @books=Book.all
+      render 'books/index'
+    end
+  end
+
+
+スキーマを見ると、user_idはtitle,bodyと同じように中身がない、空の状態。もともとタイトルとか感想がないようにユーザー情報も最初は空。
+
+@bookのuser_idに現在ログイン中のユーザー情報を挿入するという意味。
+だからuser_idとxurrent_user.idはイコール関係じゃない。
+両側に.idを付けないといけないという説明は不要
+
+
