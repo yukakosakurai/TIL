@@ -82,3 +82,20 @@ attachment :image # ここを追加（_idは含めません）
 
 アプリ２/３
 
+
+エラーメッセージ
+<% if product.errors.any? %>　　　#errorsはモデルにバリデーションをかけた時に発生したエラー内容を確認できる。（バリデーションははチェック機能）
+　　　　　　　　　　　　　　　　　　　any?と組み合わせてエラーが発生しているか確認する
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.full_messages.each do |message| %>　　#full_messageと組み合わせることでエラーの内容を出力
+        　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　エラー文は配列で保存されているためeachを使う。
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  https://qiita.com/at-946/items/6cf11f100951de67d085
