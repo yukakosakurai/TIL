@@ -55,3 +55,60 @@ http://localhost:3000/ディレクトリ名/ファイル名
 一般的に/:idと記述する。
 具体的な数字を書いてしまうとその数字という意味のurlになってしまう。
 
+
+
+Namespace(名前空間）
+...メソッド名や変数名などが衝突しないようにするための機能
+　同名での定義を防ぐためにモジュールやクラスを使う
+
+rubyは同じメソッドが使われると、エラーにならずどちらかのみ使用される
+モジュール：インスタンス化ができない（固定値やメソッドのみを持つ）
+クラス：インスタンス化できる
+
+モジュールの定義
+Module ModuleName
+...
+
+End
+
+で定義。
+
+モジュール内のファンクションを実行するにはモジュール名の後に::を付けることでメソッドにアクセスできる。
+module FirstModule
+  def self.foo
+    puts "foo 1st"
+  end
+end
+module SecondModule
+  def foo
+    puts "foo 2nd"
+   end
+  module_function :foo
+end
+FirstModule::foo
+SecondModule::foo
+
+貼り付け元  <https://techacademy.jp/magazine/22391> 
+
+namespaceはURLをグループ化できるので、メンテナンスしやすい
+
+ユーザーが利用する画面と管理者側で画面を分けたい時
+
+貼り付け元  <https://qiita.com/tomoharutt/items/445dd53e9c74b6e8c7e3> 
+
+
+namespace :admin do
+  resources :users 
+end
+scope module: :public do
+  resources :users 
+end
+
+使い方
+namespace グループ化したいディレクトリ名　do
+ httpメソッド　実際の表記されるURL, :to => "コントローラー名#アクション名"
+End
+
+
+
+
