@@ -40,8 +40,6 @@ git　statusで状況確認しながら
 
 Git add *　　　　※インデックスに追加する作業
 
-（Git status）
-
 Git commit -m "メッセージ"
 
 （Git status）
@@ -67,9 +65,9 @@ Git remote -v　　今どのリモートリポジトリと紐づけら得てい�
 git config --global user.name “XXXX”　本名、ローマ字
 git config --global user.email XXXX      githubに登録したメール
 
+
+
 画像の登録時にエラー
-
-
 
 モデルに追記する。
 
