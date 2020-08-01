@@ -96,7 +96,7 @@ namespaceはURLをグループ化できるので、メンテナンスしやす�
 
 貼り付け元  <https://qiita.com/tomoharutt/items/445dd53e9c74b6e8c7e3> 
 
-
+ルーティングに、、、
 namespace :admin do
   resources :users 
 end
