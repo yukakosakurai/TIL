@@ -74,6 +74,7 @@ End
 で定義。
 
 モジュール内のファンクションを実行するにはモジュール名の後に::を付けることでメソッドにアクセスできる。
+
 module FirstModule
   def self.foo
     puts "foo 1st"
@@ -100,11 +101,13 @@ namespaceはURLをグループ化できるので、メンテナンスしやす�
 namespace :admin do
   resources :users 
 end
+
 scope module: :public do
   resources :users 
 end
 
 使い方
+
 namespace グループ化したいディレクトリ名　do
  httpメソッド　実際の表記されるURL, :to => "コントローラー名#アクション名"
 End
