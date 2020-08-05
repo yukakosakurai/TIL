@@ -1,0 +1,32 @@
+①アプリ作成
+rails new NaganoCake
+
+②deviseインストール
+
+③モデル作成
+rails g devise EndUser
+rails g devise Admin
+
+④devide用のviewを作成
+ rails g devise:views
+ 
+ sign upのレイアウト変更
+ 
+ ⑤controller/application
+ 
+ class ApplicationController < ActionController::Base
+    before_action :configure_permitted_parameters, if: :devise_controller?
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number])
+  end
+
+end
+
+追加したカラムを使用できるようにする
+
+⑥サインアップしてみる
+→you are on rails!!!
+
+この画面見れるとうれしいんだわ。。。
+ 
