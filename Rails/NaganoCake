@@ -1,18 +1,30 @@
-①アプリ作成
+手順
+
+①ER図
+主キー、外キー、どんな項目が必要かを決めて、どのテーブルとどのテーブルが関係性を持っているかというのを大まかに決めていく
+
+②テーブル設計
+それぞれのカラム名にどんなデータ型があるのか、デフォルト値は設定するか、nullかなど具体的に決めていく。
+
+③アプリケーション設計
+ページごとにアクションとhttpメソッドとURLを決める。
+
+
+④アプリ作成
 rails new NaganoCake
 
-②deviseインストール
+1,deviseインストール
 
-③モデル作成
+2,モデル作成
 rails g devise EndUser
 rails g devise Admin
 
-④devide用のviewを作成
+3,devide用のviewを作成
  rails g devise:views
  
  sign upのレイアウト変更
  
- ⑤controller/application
+4,controller/application
  
  class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
@@ -25,8 +37,16 @@ end
 
 追加したカラムを使用できるようにする
 
-⑥サインアップしてみる
+5,サインアップしてみる
 →you are on rails!!!
 
 この画面見れるとうれしいんだわ。。。
+
+6,エンドユーザー＃トップページ
+　rails g controller homes top about　トップページ用のコントローラー作成
+( https://www.javadrive.jp/rails/controller/index2.html)
+
+  root :to => 'homes#top' ルート設定
+  （https://www.javadrive.jp/rails/routing/index2.html）
+ 
  
