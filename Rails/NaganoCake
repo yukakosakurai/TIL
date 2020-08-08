@@ -48,5 +48,5 @@ end
 
   root :to => 'homes#top' ルート設定
   （https://www.javadrive.jp/rails/routing/index2.html）
- 
+ 7,ログイン時、非ログイン時でヘッダーを変える
  
