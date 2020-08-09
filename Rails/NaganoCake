@@ -50,3 +50,5 @@ end
   （https://www.javadrive.jp/rails/routing/index2.html）
  7,ログイン時、非ログイン時でヘッダーを変える
  
+ 8,ログイン後、ログアウト後に飛ぶページを設定する。
+ 
