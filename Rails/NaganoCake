@@ -19,6 +19,9 @@ rails new NaganoCake
 rails g devise EndUser
 rails g devise Admin
 
+コントローラー作成
+rails g devise:controllers end_users
+rails g devise:controllers admins
 3,devide用のviewを作成
  rails g devise:views
  
