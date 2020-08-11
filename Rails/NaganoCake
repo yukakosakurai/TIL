@@ -19,6 +19,9 @@ rails new NaganoCake
 rails g devise EndUser
 rails g devise Admin
 
+deviseで二つのモデルを作ることはできる、
+こうすることで管理者側と会員側のさいとが作れる
+
 コントローラー作成
 rails g devise:controllers end_users
 rails g devise:controllers admins
