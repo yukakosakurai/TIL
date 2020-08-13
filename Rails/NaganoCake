@@ -22,15 +22,14 @@ rails g devise Admin
 deviseで二つのモデルを作ることはできる、
 こうすることで管理者側と会員側のさいとが作れる
 
-コントローラー作成
-rails g devise:controllers end_users
-rails g devise:controllers admins
 3,devide用のviewを作成
  rails g devise:views
  
- sign upのレイアウト変更
+４、コントローラー作成
+rails g devise:controllers end_users
+rails g devise:controllers admins 
  
-4,controller/application
+5,controller/application
  
  class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
@@ -43,19 +42,71 @@ end
 
 追加したカラムを使用できるようにする
 
-5,サインアップしてみる
+６,サインアップしてみる
 →you are on rails!!!
 
 この画面見れるとうれしいんだわ。。。
 
-6,エンドユーザー＃トップページ
-　rails g controller homes top about　トップページ用のコントローラー作成
+７,エンドユーザー＃トップページ
+　rails g controller admin/homes top about　トップページ用のコントローラー作成
 ( https://www.javadrive.jp/rails/controller/index2.html)
+rails g controller end_user/homes top about
 
-  root :to => 'homes#top' ルート設定
-  （https://www.javadrive.jp/rails/routing/index2.html）
- 7,ログイン時、非ログイン時でヘッダーを変える
+adminファイル、end_usersファイルにいれたいからこういう風に書く。
+
+８、ログイン後の遷移先　application_controller
+
+def after_sign_in_path_for(resource)
+        case resource
+        when Admin
+            "/admin/homes/top"
+        when EndUser
+            end_users_end_user_path(current_end_user) # ログイン後に遷移するpathを設定
+        end
+ end
  
- 8,ログイン後、ログアウト後に飛ぶページを設定する。
+ admin,end_userで遷移先が異なるから書き方を変える
  
-9,
+ いつもの遷移先の書き方
+ http://31webcreation.hatenablog.com/entry/set-page-after-login-and-logout
+　
+ deviseが複数あるとき
+ https://qiita.com/kemako/items/c0d6d65b37fea873e700
+ 
+ ９、ログイン・非ログイン時のヘッダー
+  <% if end_user_signed_in? %>
+      <li class="">
+      <%= link_to "LOGO", root_path %>
+        <%= link_to 'マイページ', end_users_end_user_path(current_end_user) %>
+      </li>
+       <li class="">
+        <%= link_to '商品一覧', "" %>
+      </li>
+      <li class="">
+        <%= link_to 'カート', "" %>
+      </li>
+      <li class="">
+        <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+      </li>
+    <% elsif admin_signed_in? %>
+        <%= link_to "LOGO", "/admin/homes/top" %>
+        <li class="">
+        <%= link_to "商品一覧", "" %>
+        </li>
+        <li class="">
+        <%= link_to "会員一覧", "" %>
+       </li>
+       <li class="">
+        <%= link_to "注文履歴一覧", "" %>
+       </li>
+       <li class="">
+        <%= link_to "ジャンル一覧", "" %>
+       </li>
+        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+    <% else %> <% if end_user_signed_in? %>
+      <li class="">
+      ここには会員がログイン時のヘッダー
+    <% elsif admin_signed_in? %>
+        ここには管理側のログイン時のヘッダー
+    <% else %>
+ 　　ここには会員側の非ログイン時のヘッダー
