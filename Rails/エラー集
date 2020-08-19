@@ -146,4 +146,24 @@ Duplicate...重複
   
   https://qiita.com/at-946/items/6cf11f100951de67d085
 
+④caravanのレイアウト
+10章
 
+.blog {
+    width: 100%;
+    margin: 0;
+  }
+  .blog-box {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .blog-image {
+    width: 49%;
+  }
+  .blog-text {
+    width: 49%;
+    padding-top: 5px;
+  }
+blogが100%なのにblog-box,blog-image,blog-textのwidthを全部足すと102%になってしまう。
+2%余りがあるのはどうしてですか？
+（未解決））
