@@ -86,10 +86,10 @@ Cannot redirect to nil!
 
 def after_sign_out_path_for(resource)
         case resource
-        when "admin"
+        when :admin  ("admin")
             new_admin_registration_path
-        when "enduser"
-            root_path
+        when :enduser ("end_user") デバイスの使用によって変更する！
+            root_path
         end
  end
  
