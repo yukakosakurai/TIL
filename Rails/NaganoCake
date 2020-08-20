@@ -65,6 +65,26 @@ def after_sign_in_path_for(resource)
         end
  end
  
+   ログアウト後の遷移先
+   
+Application_controller.rbで
+ def after_sign_out_path_for(resource)
+        case resource
+        when Admin
+            new_admin_registration_path
+        when EndUser
+            root_path
+        end
+ end
+としたところサインアウトはうまくいくがサインアウトができなかった
+
+どんな結果(問題)となったのか
+ActionController::ActionControllerError in Admin::SessionsController#destroy
+Cannot redirect to nil!
+
+→解決方法。。。
+
+ 
  admin,end_userで遷移先が異なるから書き方を変える
  
  いつもの遷移先の書き方
