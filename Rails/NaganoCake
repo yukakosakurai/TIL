@@ -84,7 +84,25 @@ Cannot redirect to nil!
 
 →解決方法。。。
 
+def after_sign_out_path_for(resource)
+        case resource
+        when "admin"
+            new_admin_registration_path
+        when "enduser"
+            root_path
+        end
+ end
  
+という風に変える。
+大文字のAdminとEndUserではモデル名（テーブル名）を書いているだけでログインされた情報が入っていない。なぜならログインしてしまっていて情報がないから。
+そこでログインする際に最低限残しておく必要があるものがある。
+それはモデル名！！！重要なのはモデル名を文字列として残すこと！！！！
+rubyを学ぼうの3章であるように文字列にするためには""/''で囲む必要がある。
+だから上のように変更した。
+
+サインインの時はcreateでモデルが作られresourceの中に入るが、サインアウトしてしまうとAdminやendusersの情報はresourceの中からなくなってしまう。
+これが違い。
+
  admin,end_userで遷移先が異なるから書き方を変える
  
  いつもの遷移先の書き方
