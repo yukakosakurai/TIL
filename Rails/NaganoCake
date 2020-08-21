@@ -157,3 +157,14 @@ rubyを学ぼうの3章であるように文字列にするためには""/''で�
  
  11、会員情報編集ページ
  登録した情報を編集したり、退会したりできる
+ 
+ ※課題提出の仕方
+ git clone sshのurl 
+ git checkout -b ブランチ名
+ (git init)
+ git add *
+ git commit -m "メッセージ"
+ git remote add origin "sshのパス"
+ git push origin ブランチ名
+ 
+ 
