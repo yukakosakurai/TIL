@@ -126,7 +126,7 @@ rubyを学ぼうの3章であるように文字列にするためには""/''で�
       <li class="">
         <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
       </li>
-    <% elsif admin_signed_in? %>
+    <% elsif admin_signed_in? %>　※エンドユーザーがサインアウトしたら現れる。
         <%= link_to "LOGO", "/admin/homes/top" %>
         <li class="">
         <%= link_to "商品一覧", "" %>
