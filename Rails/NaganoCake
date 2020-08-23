@@ -167,4 +167,14 @@ rubyを学ぼうの3章であるように文字列にするためには""/''で�
  git remote add origin "sshのパス"
  git push origin ブランチ名
  
+ 12、※seed　
+ seedとは…初期データの事。データを削除しても削除されたくないものなどを登録しておく
  
+　db/seed.rb
+ 
+ Admin.create!(
+    email: "a@a",
+    password: "aaaaaa"
+)
+
+rails db:seedもわすれずに！！
