@@ -167,3 +167,6 @@ Duplicate...重複
 blogが100%なのにblog-box,blog-image,blog-textのwidthを全部足すと102%になってしまう。
 2%余りがあるのはどうしてですか？
 （未解決））
+
+redirect先がindexの時、idを指定してしまうとURLに不要なものがつく、（.id)みたいな
+そしたらかっこに部分を削除すればよい
