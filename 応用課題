@@ -1,0 +1,194 @@
+Bookers2にいいね機能を追加しましょう
+実装する機能
+
+コントローラ
+favoritesコントローラを追加
+createアクションを追加
+用途：いいねを作成する
+destroyアクションを追加
+用途：いいねを削除する
+
+コントローラー・アクション作成
+rails g controller favorites create destroy
+
+ルーティングを追加
+
+  resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+  end
+  
+  bookにいいねが付くから入れ子にする。
+  今まではresourcesでしたが、ここでは、resourceとなっている
+単数にすると、そのコントローラのidがリクエストに含まれなくなります。
+今回、いいねの詳細ページは作成しません。
+favoritesのshowページが不要で、idの受け渡しも必要ないので、resourceとなっている
+
+モデルを作成する
+rails g model Favorite user_id:integer book_id:integer  ????
+
+モデルの関連付け
+book.rb,user.rbには
+has_many :favorites
+
+favorite.rbには
+belongs_to :user(単数）
+belongs_to :book(単数）
+を追加
+
+book.rbに
+def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+end
+
+ここには、favorited_by?メソッドを作成します。
+このメソッドで、引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べます。
+存在していればtrue、存在していなければfalseを返すようにしています。
+
+view/books/show
+
+<!-- いいね機能 -->
+        <td>
+          <% if @book.favorited_by?(current_user) %> book.rbで実装したメソッド、（投稿画像に付けられた「いいね」に、自分（ログインしているユーザ）が含まれているかをfavorited_by?メソッドで判定しています。）
+            <%= link_to book_favorites_path(@book, redirect_id: 0), method: :delete do %>　いいねに自分が含まれていたらいいねを消す。一度いいねを押すと次押したら消える、インスタとかイメージする
+  　　　　　　　<span class="glyphicon glyphicon-heart"><%= @book.favorites.count%></span>
+            <% end %>
+          <% else %>　　含まれていなかったら、（まだいいねしていなかったら）
+            <%= link_to book_favorites_path(@book, redirect_id: 0), method: :post do %>　いいねを付ける
+              <span class="glyphicon glyphicon-heart-empty"><%= @book.favorites.count %></span>
+            <% end %>
+          <% end %>
+        </td>
+        
+投稿画像に付けられた「いいね」に、自分（ログインしているユーザ）が含まれているかをfavorited_by?メソッドで判定しています。
+ちなみにfavorited_by?メソッドは、bookモデルで実装したメソッドです。
+
+「含まれるとき／含まれないとき」で、表示と機能を分けています。
+<i>タグとFontAwesomeのclassで、ハートマークを表示してます。
+また、リンクの<a>タグのメソッドを、条件によって変えています。 deleteでいいね削除。postでいいねを送信
+
+コントローラー編集
+def create
+    @book = Book.find(params[:book_id])
+    favorite = @book.favorites.new(user_id: current_user.id)
+    favorite.save
+    redirect_to request.referer　　’これは1つ前のURLに戻す’という意味。
+  end
+
+  def destroy
+    @book = Book.find(params[:book_id])
+    favorite = current_user.favorites.find_by(book_id: @book.id)
+    favorite.destroy
+    redirect_to request.referer
+  end
+
+  private
+  def redirect
+    case params[:redirect_id].to_i    to_iは、to_sとは逆に文字列型から整数型に変換するメソッドです。
+    when 0
+      redirect_to books_path   books/index
+    when 1
+      redirect_to book_path(@book)  books/show
+    end
+  end
+
+HTTPリファラについて
+本来、参照元という意味の英単語は「referrer」であるが、HTTPリファラの場合は意図的に「referer」と綴る場合がある。これは、HTTPが策定された時にヘッダ名を間違ったスペルで書いてしまい、
+それが今でも使われている、という歴史的経緯のためである。
+直前のURLに戻りたい時に使える。
+→いいねを作成, いいねを削除した後は、行う前にいた画面に遷移すること
+
+モデル
+favoriteモデルを追加
+用途：ユーザーと投稿のセットでいいねをしている状態とする
+ユーザーは一つの投稿に一つしかいいねできないこと
+ビュー
+投稿一覧画面にいいね数, いいね(する, 外す)ボタンを追加
+<!-- いいね機能 -->
+        <td>
+          <% if book.favorited_by?(current_user) %>
+            <%= link_to book_favorites_path(book, redirect_id: 0), method: :delete do %>
+              <%#= fa_icon "heart", text: "#{book.favorites.count}", style: "color: red;" %>
+              <span class="glyphicon glyphicon-heart"><%= book.favorites.count%></span>
+            <% end %>
+          <% else %>
+            <%= link_to book_favorites_path(book, redirect_id: 0), method: :post do %>
+              <%#= fa_icon "heart-o", text: "#{book.favorites.count}", style: "color: red;" %>
+              <span class="glyphicon glyphicon-heart-empty"><%= book.favorites.count %></span>
+            <% end %>
+          <% end %>
+        </td>
+投稿詳細画面にいいね数, いいね(する, 外す)ボタンを追加
+<!-- いいね機能 -->
+        <td>
+          <% if @book.favorited_by?(current_user) %>
+            <%= link_to book_favorites_path(@book, redirect_id: 0), method: :delete do %>
+              <span class="glyphicon glyphicon-heart"><%= @book.favorites.count%></span>
+            <% end %>
+          <% else %>
+            <%= link_to book_favorites_path(@book, redirect_id: 0), method: :post do %>
+              <span class="glyphicon glyphicon-heart-empty"><%= @book.favorites.count %></span>
+            <% end %>
+          <% end %>
+        </td>
+いいねされていない記事に対しては、いいね作成ボタンを表示させる
+いいねされている記事に対しては、いいね削除ボタンを表示させる
+
+
+②Bookers2にコメント機能を追加しましょう
+実装する機能
+
+コントローラ
+book_commentsコントローラを追加
+createアクションを追加
+用途：コメントを作成する
+destroyアクションを追加
+用途：コメントを削除する
+
+rails g controller book_comments create destroy
+
+ルーティングを設定
+resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do
+    resource :book_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+end
+
+
+自分のコメントしか削除できないこと
+コメント, コメント削除後は行う前の画面に遷移すること
+モデル
+book_commentモデルを追加 空のコメントは保存できないこと
+
+class BookComment < ApplicationRecord
+  belongs_to :user
+  belongs_to :book
+  validates :comment, presence: true
+end
+
+ビュー
+投稿一覧画面にコメント数を追加
+  <td>コメント数：<%= book.book_comments.count %></td>
+投稿詳細画面に、投稿に対するコメント一覧, コメント数を追加
+<table class="show-tb">
+      <% @book_comments.each do |book_comment| %> <!-- コメント一覧 -->
+        <tr>
+          <td>
+            <%= link_to user_path(book_comment.user), class: "user_#{book_comment.user.id}" do %>　　コメントしたユーザーのマイページに遷移する
+              <%= attachment_image_tag book_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+              <%= book_comment.user.name %>
+            <% end %>
+          </td>
+          <td><%= book_comment.comment %></td>　book_commentに入っているコメントを表示
+          <% unless current_user != book_comment.user %>　もしも（現在ログイン中のユーザーとコメントしたユーザーがイコールでなかったら）ではなかったら、unlessがifの反対で、もし～ではなかったら。
+            <td><%= link_to 'Destroy', book_book_comments_path(book_comment.id), class: 'btn-sm btn-danger', method: :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+    <div class="comment-form">
+      <%= form_for [@book, @book_comment] do |f| %>　formのアソシエーション。@bookに対するコメント。親と子の関係を表している。　必須！！！二つあることは間違いではない。
+        <%= f.text_area :comment, size: "90x5" %>
+        <%= f.submit '送信' %>
+      <% end %>
+    </div>
+    
+    自分のコメントしか削除できないこと
