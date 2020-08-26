@@ -169,6 +169,7 @@ rubyを学ぼうの3章であるように文字列にするためには""/''で�
  
  12、※seed　
  seedとは…初期データの事。データを削除しても削除されたくないものなどを登録しておく
+ 管理者側のログイン情報をあらかじめ登録するからサインアップの画面が不要！
  
 　db/seed.rb
  
@@ -192,3 +193,4 @@ end_users/index
 <%= link_to '退会しない', end_users_end_user_path(@user) %> 退会しない場合はマイページ
 <%= link_to '退会する', destroy_end_user_session_path, method: :delete, data: { confirm: '本当に退会しますか？' } %>　退会する場合はログアウトして退会
 
+14．
