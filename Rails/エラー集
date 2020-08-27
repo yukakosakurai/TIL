@@ -170,3 +170,7 @@ blogが100%なのにblog-box,blog-image,blog-textのwidthを全部足すと102%�
 
 redirect先がindexの時、idを指定してしまうとURLに不要なものがつく、（.id)みたいな
 そしたらかっこに部分を削除すればよい
+
+
+URLに不要な.idがついてしまう
+ダイレクト先がindexなのに（＠book)とかで不要なidを指定してしまうと、.idがつくことがある。
