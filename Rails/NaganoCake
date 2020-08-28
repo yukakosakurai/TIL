@@ -76,7 +76,7 @@ Application_controller.rbで
             root_path
         end
  end
-としたところサインアウトはうまくいくがサインアウトができなかった
+としたところサインアウトはうまくいくがサインアウトができなかった。
 
 どんな結果(問題)となったのか
 ActionController::ActionControllerError in Admin::SessionsController#destroy
