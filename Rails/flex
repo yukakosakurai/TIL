@@ -1,0 +1,34 @@
+親要素にdisplay: flex;で準備完了。親の箱を作成したイメージ
+flexコンテンナーに大変身！！！
+並方向(横・縦) / 横方向の整列方法 / 縦方向の整列方法 / 折り返し方法 などを同時に設定することができる。
+
+flexコンテナーに直接入っている要素はすべてflexアイテム！！
+
+flexコンテナーのプロパティ
+https://web-camp.online/lesson/curriculums/203/contents/1472
+参照 
+
+
+補足
+Flex-flow
+flex-directionとflex-wrapをまとめて指定できる
+参照↓
+貼り付け元  <https://qiita.com/junya/items/54fccd004c3a468abd81> 
+
+
+演習
+:first-child 
+意味：
+ある要素内で最初に現れる子要素を対象にスタイルを適用します。
+例えば、リストの最初の項目だけとか、いくつかある段落のうち、最初の段落だけにスタイル指定する場合などに使用します。
+
+貼り付け元  <http://www.htmq.com/selector/first-child.shtml> 
+
+Margin: 0 auto;で左右中央寄せ
+
+Flex-basisとwidth
+「flex-basis」は「flex-direction」で定義した主軸の方向に依存して、幅または高さを決定させます。「width」は幅の指定で、高さを変更する時は「height」を手作業で指定しなければなりません。
+
+貼り付け元  <https://coliss.com/articles/build-websites/operation/css/even-more-about-how-flexbox-works.html> 
+
+
