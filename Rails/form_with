@@ -1,0 +1,8 @@
+<%= form_with model:@インスタンス変数, url:'/コントローラー名', local:true do |f| %>
+<% end %>
+
+・form_withのdoからendまでが有効範囲
+
+local:trueがない場合はデフォルトで非同期通信が行われてしまう。非同期通信ではＡｊａｘが関係していてjavascript
+  の知識が必要になる。
+  通常はlocal:trueを指定しておけば大丈夫。
