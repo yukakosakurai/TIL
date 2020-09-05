@@ -98,7 +98,7 @@ attachment :image # ここを追加（_idは含めません）
   
   https://qiita.com/at-946/items/6cf11f100951de67d085
   
-  User_idとはなんだ
+User_idとはなんだ
 
  def create
     @user=current_user
