@@ -193,9 +193,23 @@ end_users/index
 <%= link_to '退会しない', end_users_end_user_path(@user) %> 退会しない場合はマイページ
 <%= link_to '退会する', destroy_end_user_session_path, method: :delete, data: { confirm: '本当に退会しますか？' } %>　退会する場合はログアウトして退会
 
-14．
+14．エンドユーザー＃編集ページ
+ルーティングにedit、updateを追加
+コントローラー
+def edit
+        @user=EndUser.find(params[:id])
+    end
 
 
+def update
+        @user=EndUser.find(params[:id])
+        @user.update(end_user_params)
+        redirect_to end_users_end_user_path(@user)
+end
+
+変更
+
+ビュー
 
 
 15
