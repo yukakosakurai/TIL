@@ -210,6 +210,26 @@ end
 変更
 
 ビュー
+<%= form_with model: @user, url: { action: :update },  local: true do |f| %>
+  <h4>名前</h4>
+  <a>(姓)</a>
+  <%= f.text_field :last_name%>  
+  <a>(名)</a>
+  <%= f.text_field :first_name%>  
+  <h4>フリガナ</h4>
+  <a>(セイ)</a>
+  <%= f.text_field :last_name_kana%>  
+  <a>(メイ)</a>
+  <%= f.text_field :first_name_kana%>
+  <h4>メールアドレス</h4>
+  <%= f.email_field :email%>
+  <h4>郵便番号</h4>
+  <%= f.text_field :post_code%>
+  <h4>住所</h4>
+  <%= f.text_field :address%>
+  <h4>電話番号</h4>
+  <%= f.text_field :phone_number%>
+  <%= f.submit '編集内容を保存する' %>
+<% end %>
 
 
-15
