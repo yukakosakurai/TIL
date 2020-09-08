@@ -65,7 +65,7 @@ def after_sign_in_path_for(resource)
         end
  end
  
-   ログアウト後の遷移先
+ ログアウト後の遷移先
    
 Application_controller.rbで
  def after_sign_out_path_for(resource)
