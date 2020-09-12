@@ -187,3 +187,36 @@ https://qiita.com/xusaku_/items/d49c7f19feda6dba127a
 
 
 サインアップ、ログインごとにサクセスメッセージを変える方法
+
+
+5. floatをかけた要素の親要素のheightが0になってしまった。親要素の高さが、その子要素の分だけ確保されるには、どうすればいいか
+・clearを使う
+プロパティの指定	動作
+clear:left;	float:left;の回り込みを消す。
+clear:right;	float:right;の回り込みを消す。
+clear:both;	floatの回り込みすべてを消す。
+clear:none;	回り込みのクリアを消す（回り込みを復活させる）
+
+貼り付け元  <https://www.sejuku.net/blog/52043> 
+
+・
+• floatを使う
+• overflowを使う
+• clearfixを使う
+
+Clearfix　4章
+回り込みを解除できる
+1. .clearfix::after {
+2.     content: "";
+3.     display: block;
+4.     clear: both;
+5. }
+要素の直後に保護フィルター。beforeにすると要素の直前に保護フィルター
+
+floatとclearfixのまとめ
+	•  横並びにさせたい子要素すべてにfloatを設定する。
+	•  floatを設定した要素を親要素で囲む
+	•  親要素にclearfixを設定する
+
+貼り付け元  <https://web-camp.online/lesson/curriculums/191/contents/940> 
+
