@@ -220,5 +220,19 @@ floatとclearfixのまとめ
 
 貼り付け元  <https://web-camp.online/lesson/curriculums/191/contents/940> 
 
+⑦ ⑤の解決後、再度一覧画面を表示するとNo route matches
+
+解説
+
+エラー文にmissing required keys: [:id]と書かれています。
+urlにidを要求しているのに渡せていない状況になります。
+editのページにリダイレクトするためにはid(引数)が必要ですのでbookを渡してあげる必要があります。
+
+- <td><%= link_to 'Edit', edit_book_path, class: "edit_#{book.id}" %></td>
++ <td><%= link_to 'Edit', edit_book_path(book), class: "edit_#{book.id}" %></td>
 
 
+Set_bookって何？？
+
+複数のコントローラーに同じ処理が書かれている場合、一括でまとめてその変数を定義することができる。
+https://qiita.com/mio158cm/items/fa5c97cfdb06f985d809
