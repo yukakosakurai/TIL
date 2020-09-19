@@ -246,4 +246,5 @@ https://qiita.com/mio158cm/items/fa5c97cfdb06f985d809
 
 runtime error
 エラー文にかれているkeyをコピーして　
-co
+config/initializers/application
+に張り付ける
