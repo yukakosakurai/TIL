@@ -27,6 +27,7 @@ deviseで二つのモデルを作ることはできる、
  
 ４、コントローラー作成
 rails g devise:controllers end_users
+
 rails g devise:controllers admins 
  
 5,controller/application
