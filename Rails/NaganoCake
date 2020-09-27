@@ -46,7 +46,8 @@ end
 ６,サインアップしてみる
 →you are on rails!!!
 
-この画面見れるとうれしいんだわ。。。
+この画面見れるとうれしいんだわ
+
 
 ７,エンドユーザー＃トップページ
 　rails g controller admin/homes top about　トップページ用のコントローラー作成
