@@ -41,6 +41,7 @@ rails g devise:controllers admins
 
 end
 
+
 追加したカラムを使用できるようにする
 
 ６,サインアップしてみる
