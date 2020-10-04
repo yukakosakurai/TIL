@@ -1,4 +1,5 @@
 
 before_action :authenticate_user!
   記述することでそこで行われる処理はログインユーザーによってのみ実行可能となる。
+  これがされていないと他人がログイン中のユーザーの編集や削除ができてしまう。
 https://qiita.com/yuya_maru2/items/227d03da64d863fc0629
