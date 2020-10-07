@@ -248,3 +248,21 @@ runtime error
 エラー文にかれているkeyをコピーして　
 config/initializers/application
 に張り付ける
+
+
+直前のページに遷移したい時（いいねの時などに使える）
+①遷移元のURL を取得してリダイレクトする方法
+ここでいういいねを登録して遷移するページの前＝いいねしたページ＝その場のページ
+redirect_to request.referer
+
+→HTTPリファラという。
+https://qiita.com/sew_sou19/items/21974ec512c0a9b329aa
+
+②遷移元のURL を取得してリダイレクトする方法
+redirect_back(fallback_location: root_path)
+
+railsのバージョンが5以降のものはこのように書くと直前のページにリダイレクトされる
+
+https://nanayaku.com/rails-redirect_to-redirect_back/
+
+
