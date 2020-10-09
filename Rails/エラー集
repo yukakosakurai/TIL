@@ -76,6 +76,7 @@ attachment :image # ここを追加（_idは含めません）
 
 画像関係のエラーが出た時
 ・<form_for>
+
 <%= f.attachment_field :image %>で実装しているか
 ・モデルに画像用のメソッドを追加しているか
 
