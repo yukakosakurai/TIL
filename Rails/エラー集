@@ -31,6 +31,7 @@ cdで移動するたびにlsコマンドで次にどこに飛ぶことができ�
 例えばchapter2の中のchapter2.html&chapter2.cssをpushしたいとなったら、
 cd　chapter2まで移動。
 
+
 ここで
 git init
 意味：からのgitリポジトリを作る。
