@@ -284,4 +284,14 @@ showアクションに
 部分テンプレートの変数を@book_newに変更
 
 
+①応用課題１　再度一覧画面を表示するとNo route matches
+
+解説　
+
+エラー文にmissing required keys: [:id]と書かれています。
+urlにidを要求しているのに渡せていない状況になります。
+editのページにリダイレクトするためにはid(引数)が必要ですのでbookを渡してあげる必要があります。
+
+- <td><%= link_to 'Edit', edit_book_path, class: "edit_#{book.id}" %></td>
++ <td><%= link_to 'Edit', edit_book_path(book), class: "edit_#{book.id}" %></td>
 
