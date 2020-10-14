@@ -295,3 +295,11 @@ editのページにリダイレクトするためにはid(引数)が必要です
 - <td><%= link_to 'Edit', edit_book_path, class: "edit_#{book.id}" %></td>
 + <td><%= link_to 'Edit', edit_book_path(book), class: "edit_#{book.id}" %></td>
 
+
+投稿内容が表示されない
+考えられる原因。。
+
+ルーティングの親子関係がうまく結ばれていない。
+ストロングパラメーターで使用しているカラム名をビューで使っていない。
+require()がダブっているかもしれないから消す
+
