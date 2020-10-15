@@ -115,6 +115,7 @@ rubyを学ぼうの3章であるように文字列にするためには""/''で�
  deviseが複数あるとき
  https://qiita.com/kemako/items/c0d6d65b37fea873e700
  
+ 
  ９、ログイン・非ログイン時のヘッダー
   <% if end_user_signed_in? %>
       <li class="">
