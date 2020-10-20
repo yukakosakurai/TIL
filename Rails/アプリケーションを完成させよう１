@@ -30,6 +30,7 @@ erbファイルでは<% binding.pry %>と入力する。
 参考：https://qiita.com/ryosuketter/items/da3a38d0d41c7e20a2d6
 カリキュラムでは開発スキルアップからアプリケーションを完成させように移動させた
 
+
 @モデル名　その変数の内容
 モデル名_params（params)　ストロングパラメーターで設定したparams情報
 モデル名　モデルに入力されたテーブル構造が出力
