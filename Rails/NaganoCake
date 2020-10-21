@@ -263,6 +263,21 @@ id属性を使うかどうかは、その要素を「一意に特定する必要
 
 ２、アドミン側・ジャンル一覧
 
+railsでラジオボタンを実装する
+→参考）https://techacademy.jp/magazine/22208
+
+
+
+<%= form_with model: @genre, url:admin_genres_path, local:true do |f| %>
+<p>ジャンル 
+<%= f.text_field :name %>　ここは追加したカラム名
+<%= f.radio_button :is_sold_out, :effect %>
+<%= f.label :is_sold_out, "有効", {value: :effect, style: "display: inline-block;"} %>
+<%= f.radio_button :is_sold_out, :invalid %>
+<%= f.label :id_sold_out, "無効", {value: :invalid, style: "display: inline-block;"} %>
+<%= f.submit "追加"%>
+</p>
+<% end %>
 
 
 
