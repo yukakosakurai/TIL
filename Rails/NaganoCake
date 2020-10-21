@@ -271,13 +271,15 @@ railsでラジオボタンを実装する
 <%= form_with model: @genre, url:admin_genres_path, local:true do |f| %>
 <p>ジャンル 
 <%= f.text_field :name %>　ここは追加したカラム名
-<%= f.radio_button :is_sold_out, :effect %>
-<%= f.label :is_sold_out, "有効", {value: :effect, style: "display: inline-block;"} %>
+<%= f.radio_button :is_sold_out, :effect %>　フォームと値をセットで指定
+<%= f.label :is_sold_out, "有効", {value: :effect, style: "display: inline-block;"} %>　表示テキストの指定と選択肢との紐づけ
 <%= f.radio_button :is_sold_out, :invalid %>
 <%= f.label :id_sold_out, "無効", {value: :invalid, style: "display: inline-block;"} %>
 <%= f.submit "追加"%>
 </p>
 <% end %>
+
+Userモデルのgenderプロパティを選択し、値をセットで設定。
 
 
 
