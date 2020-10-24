@@ -110,6 +110,7 @@ rubyを学ぼうの3章であるように文字列にするためには""/''で�
  admin,end_userで遷移先が異なるから書き方を変える
  
  いつもの遷移先の書き方
+ 
  http://31webcreation.hatenablog.com/entry/set-page-after-login-and-logout
 　
  deviseが複数あるとき
